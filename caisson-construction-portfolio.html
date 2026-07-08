@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caisson Building Co. — Commercial &amp; Residential Construction</title>
+<meta name="description" content="Caisson Building Co. — ground-up construction, renovation, and design-build services. Placeholder portfolio site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ============================= TOKENS ============================= */
+:root{
+  --ink:#14171A;
+  --paper:#F1EDE4;
+  --paper-dim:#E7E1D2;
+  --concrete:#A39C8E;
+  --slate:#5B6670;
+  --amber:#F2A900;
+  --rust:#8B4429;
+  --steel-dark:#1C2327;
+
+  --display: 'Oswald', sans-serif;
+  --body: 'IBM Plex Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --max: 1240px;
+  --edge: clamp(20px, 5vw, 64px);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--display);
+  text-transform:uppercase;
+  letter-spacing:0.01em;
+  margin:0;
+  font-weight:600;
+  color:var(--ink);
+}
+
+p{ margin:0; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; margin:0; padding:0; }
+button{ font-family:inherit; cursor:pointer; }
+img,svg{ display:block; max-width:100%; }
+
+.mono{ font-family:var(--mono); }
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12.5px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--rust);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:"";
+  width:22px; height:1px;
+  background:var(--rust);
+  display:inline-block;
+}
+
+.wrap{
+  max-width:var(--max);
+  margin:0 auto;
+  padding-left:var(--edge);
+  padding-right:var(--edge);
+}
+
+.section{ padding:96px 0; position:relative; }
+@media (max-width:720px){ .section{ padding:64px 0; } }
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:32px;
+  margin-bottom:48px;
+  border-bottom:1px solid var(--concrete);
+  padding-bottom:24px;
+}
+.section-head h2{ font-size:clamp(28px,4vw,42px); margin-top:10px; }
+.section-head .sh-note{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--slate);
+  max-width:280px;
+  text-align:right;
+  line-height:1.6;
+}
+@media (max-width:720px){
+  .section-head{ flex-direction:column; align-items:flex-start; gap:12px; }
+  .section-head .sh-note{ text-align:left; }
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 26px;
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  border:1px solid var(--ink);
+  background:transparent;
+  color:var(--ink);
+  transition:background .25s ease, color .25s ease, border-color .25s ease, transform .2s ease;
+  white-space:nowrap;
+}
+.btn:hover{ transform:translateY(-2px); }
+.btn-primary{ background:var(--amber); border-color:var(--amber); color:var(--ink); }
+.btn-primary:hover{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+.btn-ghost-light{ border-color:var(--paper); color:var(--paper); }
+.btn-ghost-light:hover{ background:var(--paper); color:var(--ink); }
+.btn-outline:hover{ background:var(--ink); color:var(--paper); }
+.btn:focus-visible{ outline:2px solid var(--rust); outline-offset:3px; }
+
+/* reveal on scroll */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+
+/* ============================= NAV ============================= */
+header.site-nav{
+  position:sticky; top:0; z-index:100;
+  background:rgba(241,237,228,0.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--concrete);
+}
+.nav-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:14px var(--edge);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-mark{ width:44px; height:44px; flex-shrink:0; }
+.brand-name{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:0.03em;
+  text-transform:uppercase;
+  line-height:1.1;
+}
+.brand-name small{
+  display:block;
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:0.14em;
+  color:var(--slate);
+  text-transform:uppercase;
+  font-weight:400;
+}
+nav.primary-links{ display:flex; align-items:center; gap:34px; }
+nav.primary-links a{
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  position:relative;
+  padding-bottom:4px;
+}
+nav.primary-links a::after{
+  content:"";
+  position:absolute; left:0; bottom:0;
+  width:0; height:1px;
+  background:var(--rust);
+  transition:width .25s ease;
+}
+nav.primary-links a:hover::after{ width:100%; }
+.nav-cta{ display:flex; align-items:center; gap:22px; }
+.menu-toggle{
+  display:none;
+  background:none; border:1px solid var(--ink); width:42px; height:42px;
+  align-items:center; justify-content:center;
+}
+.menu-toggle span{ display:block; width:20px; height:2px; background:var(--ink); position:relative; }
+.menu-toggle span::before,.menu-toggle span::after{
+  content:""; position:absolute; left:0; width:20px; height:2px; background:var(--ink);
+}
+.menu-toggle span::before{ top:-6px; }
+.menu-toggle span::after{ top:6px; }
+
+@media (max-width:900px){
+  nav.primary-links{
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--paper);
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+    border-bottom:1px solid var(--concrete);
+    max-height:0; overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  nav.primary-links.open{ max-height:400px; }
+  nav.primary-links a{ padding:16px var(--edge); width:100%; border-top:1px solid var(--paper-dim); }
+  .nav-cta .btn-primary{ display:none; }
+  .menu-toggle{ display:flex; }
+}
+
+/* ============================= HERO ============================= */
+.hero{
+  padding:64px 0 0;
+  background:
+    linear-gradient(var(--paper), var(--paper)),
+    repeating-linear-gradient(0deg, rgba(20,23,26,0.05) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(90deg, rgba(20,23,26,0.05) 0 1px, transparent 1px 40px);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:0.9fr 1.1fr;
+  gap:40px;
+  align-items:center;
+}
+@media (max-width:980px){ .hero-grid{ grid-template-columns:1fr; } }
+
+.hero-copy .sheet-tag{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--slate);
+  letter-spacing:0.1em;
+  display:flex; gap:18px; flex-wrap:wrap;
+  margin-bottom:22px;
+}
+.hero-copy h1{
+  font-size:clamp(40px, 6.4vw, 76px);
+  line-height:0.98;
+  margin-bottom:22px;
+}
+.hero-copy h1 em{
+  font-style:normal;
+  color:var(--rust);
+}
+.hero-copy p.lead{
+  font-size:17px;
+  color:var(--slate);
+  max-width:440px;
+  margin-bottom:32px;
+}
+.hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:12px; }
+
+.hero-art{ position:relative; }
+.hero-art svg{ width:100%; height:auto; }
+.draw-path{
+  stroke-dasharray:1;
+  stroke-dashoffset:1;
+  transition:stroke-dashoffset 2.2s ease;
+}
+.draw-path.go{ stroke-dashoffset:0; }
+.fade-in-el{ opacity:0; transition:opacity 1s ease 1.6s; }
+.fade-in-el.go{ opacity:1; }
+
+.stat-band{
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);
+  margin-top:56px;
+}
+.stat-band .wrap{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.stat{
+  padding:26px 20px;
+  border-left:1px solid var(--concrete);
+  text-align:left;
+}
+.stat:first-child{ border-left:none; padding-left:0; }
+.stat .num{
+  font-family:var(--display);
+  font-size:clamp(28px,3.4vw,40px);
+  font-weight:600;
+  color:var(--ink);
+}
+.stat .label{
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--slate);
+  margin-top:4px;
+}
+@media (max-width:720px){
+  .stat-band .wrap{ grid-template-columns:repeat(2,1fr); }
+  .stat{ border-left:none; border-top:1px solid var(--concrete); padding-left:0; padding-top:20px; }
+  .stat:nth-child(odd){ padding-right:16px; }
+}
+
+/* ============================= SERVICES ============================= */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--concrete);
+  border:1px solid var(--concrete);
+}
+@media (max-width:900px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
+
+.service-card{
+  background:var(--paper);
+  padding:32px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-height:250px;
+  transition:background .3s ease;
+}
+.service-card:hover{ background:var(--paper-dim); }
+.service-card .sheet-no{
+  font-family:var(--mono);
+  font-size:12px;
+  color:var(--rust);
+  letter-spacing:0.06em;
+}
+.service-card .icon{ width:38px; height:38px; color:var(--ink); }
+.service-card h3{ font-size:20px; margin-top:auto; }
+.service-card p{ color:var(--slate); font-size:14.5px; }
+
+/* ============================= PROCESS ============================= */
+.process{ background:var(--ink); color:var(--paper); }
+.process .section-head{ border-color:#33393D; }
+.process .section-head h2{ color:var(--paper); }
+.process .eyebrow{ color:var(--amber); }
+.process .eyebrow::before{ background:var(--amber); }
+.process .sh-note{ color:#8B9296; }
+
+.process-list{ display:flex; flex-direction:column; }
+.process-item{
+  display:grid;
+  grid-template-columns:90px 1fr 1fr;
+  gap:24px;
+  padding:28px 0;
+  border-top:1px solid #33393D;
+  align-items:start;
+}
+.process-item:last-child{ border-bottom:1px solid #33393D; }
+.process-item .p-num{
+  font-family:var(--display);
+  font-size:34px;
+  color:var(--amber);
+  font-weight:600;
+}
+.process-item h3{ color:var(--paper); font-size:19px; }
+.process-item p{ color:#AEB4B7; font-size:14.5px; max-width:420px; }
+@media (max-width:760px){
+  .process-item{ grid-template-columns:50px 1fr; }
+  .process-item p{ grid-column:2/3; }
+}
+
+/* ============================= PROJECTS ============================= */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+@media (max-width:980px){ .projects-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .projects-grid{ grid-template-columns:1fr; } }
+
+.project-card{
+  border:1px solid var(--concrete);
+  background:var(--paper);
+  transition:border-color .25s ease, transform .25s ease;
+}
+.project-card:hover{ border-color:var(--ink); transform:translateY(-4px); }
+.blueprint-thumb{
+  position:relative;
+  aspect-ratio:4/3;
+  background:
+    repeating-linear-gradient(0deg, rgba(20,23,26,0.06) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(90deg, rgba(20,23,26,0.06) 0 1px, transparent 1px 20px),
+    var(--paper-dim);
+  overflow:hidden;
+  border-bottom:1px solid var(--concrete);
+}
+.blueprint-thumb svg{ position:absolute; inset:0; width:100%; height:100%; }
+.blueprint-thumb .thumb-tag{
+  position:absolute; top:10px; left:10px;
+  font-family:var(--mono); font-size:11px; letter-spacing:0.06em;
+  background:var(--paper); padding:3px 7px; border:1px solid var(--ink);
+}
+.project-body{ padding:22px 24px 26px; }
+.project-body .p-cat{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em;
+  color:var(--rust); text-transform:uppercase; margin-bottom:8px; display:block;
+}
+.project-body h3{ font-size:20px; margin-bottom:12px; }
+.project-specs{
+  display:flex; flex-wrap:wrap; gap:8px 18px;
+  font-family:var(--mono); font-size:12px; color:var(--slate);
+  border-top:1px dashed var(--concrete); padding-top:12px;
+}
+.project-specs span b{ color:var(--ink); font-weight:600; }
+
+/* ============================= WHY / SAFETY ============================= */
+.why-band{
+  background:var(--paper-dim);
+  border-top:1px solid var(--concrete);
+  border-bottom:1px solid var(--concrete);
+}
+.why-grid{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:56px;
+  align-items:center;
+}
+@media (max-width:900px){ .why-grid{ grid-template-columns:1fr; gap:36px; } }
+.why-list{ display:flex; flex-direction:column; gap:26px; margin-top:28px; }
+.why-list li{ display:flex; gap:18px; }
+.why-list .wi-icon{ width:30px; height:30px; flex-shrink:0; color:var(--rust); margin-top:2px; }
+.why-list h4{ font-size:16px; margin-bottom:4px; }
+.why-list p{ color:var(--slate); font-size:14.5px; }
+.why-art{ border:1px solid var(--ink); padding:30px; background:var(--paper); }
+.why-art .wa-num{ font-family:var(--display); font-size:64px; color:var(--amber); line-height:1; }
+.why-art .wa-label{ font-family:var(--mono); font-size:12.5px; color:var(--slate); margin-top:10px; letter-spacing:0.05em; }
+.why-art hr{ border:none; border-top:1px dashed var(--concrete); margin:24px 0; }
+
+/* ============================= TESTIMONIALS ============================= */
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
+}
+@media (max-width:900px){ .testi-grid{ grid-template-columns:1fr; } }
+.testi-card{
+  border:1px solid var(--concrete);
+  padding:30px 26px;
+  display:flex; flex-direction:column; gap:20px;
+  background:var(--paper);
+}
+.testi-card .quote-mark{ font-family:var(--display); font-size:44px; color:var(--amber); line-height:1; }
+.testi-card p.q{ font-size:15.5px; color:var(--ink); }
+.testi-who{ font-family:var(--mono); font-size:12.5px; color:var(--slate); border-top:1px solid var(--paper-dim); padding-top:14px; }
+.testi-who b{ color:var(--ink); display:block; font-size:13.5px; margin-bottom:2px; }
+
+/* ============================= CONTACT ============================= */
+.contact{ background:var(--ink); color:var(--paper); }
+.contact .eyebrow{ color:var(--amber); }
+.contact .eyebrow::before{ background:var(--amber); }
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:56px;
+}
+@media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+.contact h2{ color:var(--paper); font-size:clamp(28px,4vw,42px); margin-bottom:16px; }
+.contact > .wrap > p.lead{ color:#AEB4B7; max-width:460px; margin-bottom:36px; }
+
+.field{ margin-bottom:20px; }
+.field label{
+  display:block; font-family:var(--mono); font-size:11.5px;
+  letter-spacing:0.08em; text-transform:uppercase; color:#8B9296; margin-bottom:8px;
+}
+.field input, .field select, .field textarea{
+  width:100%;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid #454B4F;
+  color:var(--paper);
+  font-family:var(--body);
+  font-size:15px;
+  padding:10px 2px;
+  transition:border-color .25s ease;
+}
+.field select option{ background:var(--ink); color: var(--paper);}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none; border-color:var(--amber);
+}
+.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+@media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
+.form-note{ font-size:12.5px; color:#7E858A; margin-top:6px; font-family:var(--mono); }
+#form-status{ font-family:var(--mono); font-size:13px; color:var(--amber); margin-top:16px; min-height:18px; }
+
+.title-block{
+  border:1px solid #33393D;
+  padding:0;
+}
+.tb-row{ display:flex; justify-content:space-between; padding:16px 22px; border-bottom:1px solid #33393D; gap:12px; }
+.tb-row:last-of-type{ border-bottom:none; }
+.tb-row .tb-label{ font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#8B9296; }
+.tb-row .tb-value{ font-family:var(--mono); font-size:13.5px; color:var(--paper); text-align:right; }
+.tb-map{
+  aspect-ratio:16/9;
+  border-bottom:1px solid #33393D;
+  background:
+    repeating-linear-gradient(0deg, rgba(241,237,228,0.06) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, rgba(241,237,228,0.06) 0 1px, transparent 1px 24px);
+  position:relative;
+}
+.tb-map svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+/* ============================= FOOTER ============================= */
+footer{ background:var(--ink); color:var(--paper); border-top:1px solid #33393D; }
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:36px;
+  padding:64px 0 40px;
+}
+@media (max-width:800px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:480px){ .footer-grid{ grid-template-columns:1fr; } }
+.footer-brand{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.footer-brand .brand-name{ color:var(--paper); }
+.footer-brand .brand-name small{ color:#8B9296; }
+footer p.tag{ color:#8B9296; font-size:14px; max-width:280px; }
+footer h5{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase;
+  color:#8B9296; margin-bottom:16px;
+}
+footer ul li{ margin-bottom:11px; }
+footer ul a{ font-size:14px; color:#C9CDCF; transition:color .2s ease; }
+footer ul a:hover{ color:var(--amber); }
+.footer-bottom{
+  border-top:1px solid #33393D;
+  padding:22px 0;
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  font-family:var(--mono); font-size:11.5px; color:#7E858A;
+}
+
+/* skip link */
+.skip-link{
+  position:absolute; left:-999px; top:0; background:var(--amber); color:var(--ink);
+  padding:10px 16px; z-index:1000; font-family:var(--mono); font-size:13px;
+}
+.skip-link:focus{ left:16px; top:16px; }
+
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============================= NAV ============================= -->
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="Caisson Building Co. home">
+      <svg class="brand-mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="30" cy="30" r="28" stroke="#14171A" stroke-width="1.4"/>
+        <circle cx="30" cy="30" r="23" stroke="#14171A" stroke-width="0.8"/>
+        <text x="30" y="35" text-anchor="middle" font-family="Oswald, sans-serif" font-size="19" font-weight="600" fill="#14171A">C</text>
+        <line x1="14" y1="42" x2="46" y2="42" stroke="#8B4429" stroke-width="1"/>
+      </svg>
+      <span class="brand-name">Caisson<small>Building Co. · Est. 2008</small></span>
+    </a>
+
+    <nav class="primary-links" id="primaryNav">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">Request a Quote</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================= HERO ============================= -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="sheet-tag">
+          <span>SHEET NO. A-000</span>
+          <span>SCALE: NTS</span>
+          <span>REV: 04</span>
+        </div>
+        <h1>We build<br>what <em>lasts.</em></h1>
+        <p class="lead">Caisson is a full-service construction firm handling commercial, residential and industrial projects from first survey stake to final walkthrough &mdash; on schedule and on budget.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <a href="#work" class="btn btn-outline">View Our Work</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 620 460" xmlns="http://www.w3.org/2000/svg">
+          <!-- corner crop marks -->
+          <g stroke="#5B6670" stroke-width="1">
+            <path d="M10 30 V10 H30" fill="none"/>
+            <path d="M590 10 H610 V30" fill="none"/>
+            <path d="M610 430 V450 H590" fill="none"/>
+            <path d="M30 450 H10 V430" fill="none"/>
+          </g>
+          <!-- north arrow -->
+          <g class="fade-in-el" transform="translate(556,50)">
+            <circle cx="0" cy="0" r="18" fill="none" stroke="#14171A" stroke-width="1"/>
+            <path d="M0 -12 L5 6 L0 2 L-5 6 Z" fill="#8B4429"/>
+            <text x="0" y="-22" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#5B6670">N</text>
+          </g>
+
+          <!-- ground line -->
+          <line x1="40" y1="360" x2="600" y2="360" stroke="#14171A" stroke-width="2" class="draw-path" pathLength="1"/>
+          <!-- hatching under ground -->
+          <g class="fade-in-el" stroke="#A39C8E" stroke-width="1">
+            <line x1="45" y1="360" x2="55" y2="375"/>
+            <line x1="75" y1="360" x2="85" y2="375"/>
+            <line x1="105" y1="360" x2="115" y2="375"/>
+            <line x1="135" y1="360" x2="145" y2="375"/>
+            <line x1="165" y1="360" x2="175" y2="375"/>
+          </g>
+
+          <!-- building outline -->
+          <path class="draw-path" pathLength="1" d="M120 360 V180 H280 V150 H360 V360" fill="none" stroke="#14171A" stroke-width="2.4"/>
+          <!-- setback top block -->
+          <path class="draw-path" pathLength="1" d="M280 180 V150" fill="none" stroke="#14171A" stroke-width="2.4"/>
+
+          <!-- window grid -->
+          <g class="fade-in-el" stroke="#8B4429" stroke-width="1" fill="none">
+            <!-- lower block -->
+            <rect x="136" y="200" width="18" height="26"/>
+            <rect x="166" y="200" width="18" height="26"/>
+            <rect x="196" y="200" width="18" height="26"/>
+            <rect x="226" y="200" width="18" height="26"/>
+            <rect x="256" y="200" width="18" height="26"/>
+
+            <rect x="136" y="240" width="18" height="26"/>
+            <rect x="166" y="240" width="18" height="26"/>
+            <rect x="196" y="240" width="18" height="26"/>
+            <rect x="226" y="240" width="18" height="26"/>
+            <rect x="256" y="240" width="18" height="26"/>
+
+            <rect x="136" y="280" width="18" height="26"/>
+            <rect x="166" y="280" width="18" height="26"/>
+            <rect x="196" y="280" width="18" height="26"/>
+            <rect x="226" y="280" width="18" height="26"/>
+            <rect x="256" y="280" width="18" height="26"/>
+
+            <!-- upper tower -->
+            <rect x="292" y="168" width="14" height="18"/>
+            <rect x="316" y="168" width="14" height="18"/>
+            <rect x="340" y="168" width="14" height="18"/>
+            <rect x="292" y="200" width="14" height="18"/>
+            <rect x="316" y="200" width="14" height="18"/>
+            <rect x="340" y="200" width="14" height="18"/>
+            <rect x="292" y="232" width="14" height="18"/>
+            <rect x="316" y="232" width="14" height="18"/>
+            <rect x="340" y="232" width="14" height="18"/>
+          </g>
+
+          <!-- scaffolding on right portion (under construction motif) -->
+          <g class="draw-path" pathLength="1" stroke="#5B6670" stroke-width="1.2" fill="none">
+            <line x1="368" y1="360" x2="368" y2="150"/>
+            <line x1="392" y1="360" x2="392" y2="150"/>
+            <line x1="368" y1="330" x2="392" y2="310"/>
+            <line x1="368" y1="290" x2="392" y2="270"/>
+            <line x1="368" y1="250" x2="392" y2="230"/>
+            <line x1="368" y1="210" x2="392" y2="190"/>
+            <line x1="368" y1="170" x2="392" y2="150"/>
+          </g>
+
+          <!-- crane -->
+          <g class="draw-path" pathLength="1" stroke="#14171A" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <line x1="460" y1="360" x2="460" y2="60"/>
+            <line x1="460" y1="60" x2="560" y2="80"/>
+            <line x1="460" y1="60" x2="410" y2="90"/>
+            <line x1="460" y1="80" x2="540" y2="88"/>
+            <line x1="460" y1="80" x2="430" y2="92"/>
+          </g>
+          <g class="fade-in-el" stroke="#8B4429" stroke-width="1.6">
+            <line x1="540" y1="88" x2="540" y2="130"/>
+          </g>
+          <circle class="fade-in-el" cx="540" cy="134" r="3" fill="#8B4429"/>
+
+          <!-- dimension line: width -->
+          <g class="fade-in-el" stroke="#5B6670" stroke-width="1">
+            <line x1="120" y1="390" x2="360" y2="390"/>
+            <line x1="120" y1="384" x2="120" y2="396"/>
+            <line x1="360" y1="384" x2="360" y2="396"/>
+          </g>
+          <text class="fade-in-el" x="240" y="408" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#5B6670">86'-0"</text>
+
+          <!-- dimension line: height -->
+          <g class="fade-in-el" stroke="#5B6670" stroke-width="1">
+            <line x1="96" y1="150" x2="96" y2="360"/>
+            <line x1="90" y1="150" x2="102" y2="150"/>
+            <line x1="90" y1="360" x2="102" y2="360"/>
+          </g>
+          <text class="fade-in-el" x="70" y="258" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#5B6670" transform="rotate(-90 70 258)">142'-0"</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-band">
+    <div class="wrap">
+      <div class="stat"><div class="num">18</div><div class="label">Years in Business</div></div>
+      <div class="stat"><div class="num">240+</div><div class="label">Projects Delivered</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">Lost-Time Incidents, 2025</div></div>
+      <div class="stat"><div class="num">96%</div><div class="label">On-Time Completion Rate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= SERVICES ============================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Services</div>
+        <h2>The drawing set</h2>
+      </div>
+      <p class="sh-note">Five service lines, each run by a dedicated project lead from pre-construction through closeout.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;101</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="14" width="26" height="20"/><path d="M7 14 L20 5 L33 14"/><line x1="20" y1="20" x2="20" y2="34"/></svg>
+        <h3>Commercial Construction</h3>
+        <p>Ground-up offices, retail and mixed-use builds delivered to spec, on schedule.</p>
+      </div>
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;102</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 20 L20 8 L35 20"/><path d="M9 18 V33 H31 V18"/><rect x="17" y="23" width="6" height="10"/></svg>
+        <h3>Residential Building</h3>
+        <p>Custom single-family homes and multi-unit residential, from lot to move-in day.</p>
+      </div>
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;103</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="8" width="28" height="24"/><line x1="6" y1="20" x2="34" y2="20"/><line x1="20" y1="8" x2="20" y2="32"/><path d="M28 20 V8" stroke-dasharray="2 2"/></svg>
+        <h3>Renovation &amp; Remodel</h3>
+        <p>Additions, retrofits and adaptive reuse of existing structures and historic buildings.</p>
+      </div>
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;104</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 32 L16 14 L24 24 L34 8"/><circle cx="16" cy="14" r="1.6" fill="currentColor"/><circle cx="24" cy="24" r="1.6" fill="currentColor"/><circle cx="34" cy="8" r="1.6" fill="currentColor"/></svg>
+        <h3>Design-Build</h3>
+        <p>Design and construction under one contract &mdash; one team, one schedule, one point of contact.</p>
+      </div>
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;105</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="28" height="28"/><line x1="6" y1="15" x2="34" y2="15"/><line x1="14" y1="15" x2="14" y2="34"/><line x1="22" y1="15" x2="22" y2="34"/></svg>
+        <h3>Project Management</h3>
+        <p>Scheduling, budget control and subcontractor coordination from a licensed general contractor.</p>
+      </div>
+      <div class="service-card">
+        <span class="sheet-no">A&#8209;106</span>
+        <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 5 L34 12 V22 C34 30 28 35 20 37 C12 35 6 30 6 22 V12 Z"/><path d="M13 20 L18 26 L28 14"/></svg>
+        <h3>Safety &amp; Compliance</h3>
+        <p>OSHA-aligned site safety programs and code compliance managed on every job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PROCESS ============================= -->
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Process</div>
+        <h2>From stake to handover</h2>
+      </div>
+      <p class="sh-note">Five stages, run in sequence on every project regardless of size.</p>
+    </div>
+
+    <div class="process-list reveal">
+      <div class="process-item">
+        <div class="p-num">01</div>
+        <h3>Consultation &amp; Site Survey</h3>
+        <p>We walk the site, review your program and budget, and confirm feasibility before a single drawing is made.</p>
+      </div>
+      <div class="process-item">
+        <div class="p-num">02</div>
+        <h3>Design &amp; Permitting</h3>
+        <p>Architectural coordination, engineering review and permit submission handled in-house or with your design team.</p>
+      </div>
+      <div class="process-item">
+        <div class="p-num">03</div>
+        <h3>Pre-Construction Planning</h3>
+        <p>Final scheduling, subcontractor bidding and material procurement locked in before ground is broken.</p>
+      </div>
+      <div class="process-item">
+        <div class="p-num">04</div>
+        <h3>Construction &amp; Site Management</h3>
+        <p>Daily site supervision, weekly progress reporting, and a dedicated project lead you can call directly.</p>
+      </div>
+      <div class="process-item">
+        <div class="p-num">05</div>
+        <h3>Handover &amp; Warranty</h3>
+        <p>Final walkthrough, punch-list closeout, and a two-year workmanship warranty on every project.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PROJECTS ============================= -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Selected Work</div>
+        <h2>Recent projects</h2>
+      </div>
+      <p class="sh-note">A sample of commercial, residential and civic work from the last several years.</p>
+    </div>
+
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;201</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="70" y="70" width="140" height="110" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="210" y="40" width="40" height="140" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+            <g stroke="#5B6670" stroke-width="0.8">
+              <line x1="85" y1="90" x2="100" y2="90"/><line x1="85" y1="110" x2="100" y2="110"/><line x1="85" y1="130" x2="100" y2="130"/><line x1="85" y1="150" x2="100" y2="150"/>
+              <line x1="115" y1="90" x2="130" y2="90"/><line x1="115" y1="110" x2="130" y2="110"/><line x1="115" y1="130" x2="130" y2="130"/><line x1="115" y1="150" x2="130" y2="150"/>
+              <line x1="145" y1="90" x2="160" y2="90"/><line x1="145" y1="110" x2="160" y2="110"/><line x1="145" y1="130" x2="160" y2="130"/><line x1="145" y1="150" x2="160" y2="150"/>
+              <line x1="175" y1="90" x2="190" y2="90"/><line x1="175" y1="110" x2="190" y2="110"/><line x1="175" y1="130" x2="190" y2="130"/><line x1="175" y1="150" x2="190" y2="150"/>
+            </g>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Commercial</span>
+          <h3>Harbor View Office Complex</h3>
+          <div class="project-specs">
+            <span><b>82,000</b> sq ft</span>
+            <span><b>14</b> mo. build</span>
+            <span>Portside District</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;202</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="40" y="120" width="60" height="60" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="110" y="120" width="60" height="60" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="180" y="120" width="60" height="60" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <path d="M40 120 L70 95 L100 120" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+            <path d="M110 120 L140 95 L170 120" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+            <path d="M180 120 L210 95 L240 120" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Multi-family Residential</span>
+          <h3>Maple Ridge Residences</h3>
+          <div class="project-specs">
+            <span><b>24</b> units</span>
+            <span><b>11</b> mo. build</span>
+            <span>Maple Ridge</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;203</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="55" y="60" width="190" height="120" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <line x1="55" y1="90" x2="245" y2="90" stroke="#5B6670" stroke-width="0.8"/>
+            <line x1="55" y1="120" x2="245" y2="120" stroke="#5B6670" stroke-width="0.8"/>
+            <line x1="55" y1="150" x2="245" y2="150" stroke="#5B6670" stroke-width="0.8"/>
+            <rect x="130" y="150" width="40" height="30" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Adaptive Reuse</span>
+          <h3>Founders Hall Renovation</h3>
+          <div class="project-specs">
+            <span><b>31,000</b> sq ft</span>
+            <span><b>8</b> mo. build</span>
+            <span>Old Town</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;204</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <path d="M90 180 V110 L150 75 L210 110 V180" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="130" y="140" width="24" height="40" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+            <rect x="105" y="125" width="16" height="18" fill="none" stroke="#5B6670" stroke-width="0.8"/>
+            <rect x="179" y="125" width="16" height="18" fill="none" stroke="#5B6670" stroke-width="0.8"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Custom Residential</span>
+          <h3>Cedarbrook Custom Home</h3>
+          <div class="project-specs">
+            <span><b>4,200</b> sq ft</span>
+            <span><b>9</b> mo. build</span>
+            <span>Cedarbrook</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;205</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="40" y="100" width="220" height="80" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <path d="M40 100 L70 75 L100 100" fill="none" stroke="#5B6670" stroke-width="1"/>
+            <path d="M100 100 L130 75 L160 100" fill="none" stroke="#5B6670" stroke-width="1"/>
+            <path d="M160 100 L190 75 L220 100" fill="none" stroke="#5B6670" stroke-width="1"/>
+            <path d="M220 100 L250 75 L260 100" fill="none" stroke="#5B6670" stroke-width="1"/>
+            <rect x="60" y="130" width="30" height="20" fill="none" stroke="#8B4429" stroke-width="1.2"/>
+            <rect x="150" y="130" width="30" height="20" fill="none" stroke="#8B4429" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Industrial</span>
+          <h3>Northgate Logistics Center</h3>
+          <div class="project-specs">
+            <span><b>150,000</b> sq ft</span>
+            <span><b>16</b> mo. build</span>
+            <span>Northgate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="blueprint-thumb">
+          <span class="thumb-tag">A&#8209;206</span>
+          <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="180" x2="280" y2="180" stroke="#14171A" stroke-width="1.6"/>
+            <rect x="70" y="110" width="160" height="70" fill="none" stroke="#14171A" stroke-width="1.6"/>
+            <path d="M70 110 Q150 60 230 110" fill="none" stroke="#8B4429" stroke-width="1.6"/>
+            <line x1="150" y1="65" x2="150" y2="180" stroke="#5B6670" stroke-width="0.8"/>
+            <rect x="135" y="150" width="30" height="30" fill="none" stroke="#5B6670" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="p-cat">Public / Civic</span>
+          <h3>Riverside Community Center</h3>
+          <div class="project-specs">
+            <span><b>18,000</b> sq ft</span>
+            <span><b>10</b> mo. build</span>
+            <span>Riverside</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================= WHY US ============================= -->
+<section class="section why-band" id="about">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="reveal">
+        <div class="eyebrow">Why Caisson</div>
+        <h2 style="font-size:clamp(28px,4vw,42px); margin-top:10px;">Built on process, not promises</h2>
+        <ul class="why-list">
+          <li>
+            <svg class="wi-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="13"/><path d="M10 16 L14 20 L22 11"/></svg>
+            <div><h4>Licensed &amp; insured</h4><p>Fully licensed general contractor with commercial and residential coverage in every state we build in.</p></div>
+          </li>
+          <li>
+            <svg class="wi-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="6" width="20" height="20" rx="1"/><line x1="6" y1="13" x2="26" y2="13"/><line x1="12" y1="6" x2="12" y2="13"/></svg>
+            <div><h4>Fixed-price scheduling</h4><p>Detailed line-item estimates and a locked schedule before you sign &mdash; no change-order surprises.</p></div>
+          </li>
+          <li>
+            <svg class="wi-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 4 L27 9 V16 C27 22 22 26 16 28 C10 26 5 22 5 16 V9 Z"/></svg>
+            <div><h4>Safety-first sites</h4><p>Zero lost-time incidents in the last fiscal year across every active job site.</p></div>
+          </li>
+          <li>
+            <svg class="wi-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="4"/><path d="M16 4 V8 M16 24 V28 M4 16 H8 M24 16 H28"/></svg>
+            <div><h4>One point of contact</h4><p>A dedicated project lead answers your calls from groundbreaking through the final walkthrough.</p></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="why-art reveal">
+        <div class="wa-num">02</div>
+        <div class="wa-label">LOST-TIME INCIDENTS PER YEAR, 3-YR AVG.</div>
+        <hr>
+        <div class="wa-num">A+</div>
+        <div class="wa-label">BUILDER RATING, STATE CONTRACTORS BOARD</div>
+        <hr>
+        <div class="wa-num">2-YR</div>
+        <div class="wa-label">WORKMANSHIP WARRANTY, EVERY PROJECT</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TESTIMONIALS ============================= -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Client Notes</div>
+        <h2>From the field</h2>
+      </div>
+      <p class="sh-note">Sample feedback collected at project handover. Replace with your own client quotes.</p>
+    </div>
+
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="quote-mark">&rdquo;</div>
+        <p class="q">They gave us a schedule on day one and hit every milestone on it. No surprises, no vague updates &mdash; just weekly reports and a crew that showed up.</p>
+        <div class="testi-who"><b>D. Alvarez</b>Owner, Harbor View Holdings</div>
+      </div>
+      <div class="testi-card">
+        <div class="quote-mark">&rdquo;</div>
+        <p class="q">Our renovation uncovered problems no one expected in a building that old. The team adjusted the plan within a week without blowing the budget.</p>
+        <div class="testi-who"><b>R. Okafor</b>Founders Hall Trust</div>
+      </div>
+      <div class="testi-card">
+        <div class="quote-mark">&rdquo;</div>
+        <p class="q">We interviewed four builders for our home. Caisson was the only one who walked the lot with an engineer before quoting a number.</p>
+        <div class="testi-who"><b>J. &amp; M. Whitfield</b>Cedarbrook Custom Home</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CONTACT ============================= -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow reveal">Get In Touch</div>
+    <h2 class="reveal">Start your project</h2>
+    <p class="lead reveal">Tell us about the site and scope. A project lead will follow up within one business day with next steps.</p>
+
+    <div class="contact-grid reveal">
+      <form id="quoteForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="field">
+            <label for="femail">Email</label>
+            <input type="email" id="femail" name="femail" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="fphone">Phone</label>
+            <input type="tel" id="fphone" name="fphone">
+          </div>
+          <div class="field">
+            <label for="ftype">Project type</label>
+            <select id="ftype" name="ftype">
+              <option>Commercial construction</option>
+              <option>Residential build</option>
+              <option>Renovation / remodel</option>
+              <option>Design-build</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="fmsg">Project details</label>
+          <textarea id="fmsg" name="fmsg" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+        <div class="form-note">This form is a front-end demo &mdash; connect it to your email or CRM before launch.</div>
+        <div id="form-status" role="status"></div>
+      </form>
+
+      <div class="title-block">
+        <div class="tb-map">
+          <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 130 L90 60 L160 100 L220 40 L280 90" fill="none" stroke="#454B4F" stroke-width="1"/>
+            <circle cx="160" cy="100" r="5" fill="#F2A900"/>
+            <path d="M160 82 L160 100" stroke="#F2A900" stroke-width="1.5"/>
+            <text x="168" y="86" font-family="IBM Plex Mono" font-size="10" fill="#AEB4B7">SITE OFFICE</text>
+          </svg>
+        </div>
+        <div class="tb-row"><span class="tb-label">Office</span><span class="tb-value">400 Foundry Street,<br>Suite 210</span></div>
+        <div class="tb-row"><span class="tb-label">Phone</span><span class="tb-value">(555) 010-0100</span></div>
+        <div class="tb-row"><span class="tb-label">Email</span><span class="tb-value">hello@caisson.build</span></div>
+        <div class="tb-row"><span class="tb-label">Hours</span><span class="tb-value">Mon&ndash;Fri, 7:00&ndash;17:00</span></div>
+        <div class="tb-row"><span class="tb-label">License No.</span><span class="tb-value">GC&#8209;000000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg class="brand-mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="30" cy="30" r="28" stroke="#F1EDE4" stroke-width="1.4"/>
+          <circle cx="30" cy="30" r="23" stroke="#F1EDE4" stroke-width="0.8"/>
+          <text x="30" y="35" text-anchor="middle" font-family="Oswald, sans-serif" font-size="19" font-weight="600" fill="#F1EDE4">C</text>
+          <line x1="14" y1="42" x2="46" y2="42" stroke="#F2A900" stroke-width="1"/>
+        </svg>
+        <span class="brand-name">Caisson<small>Building Co. · Est. 2008</small></span>
+      </div>
+      <p class="tag">Full-service general contractor for commercial, residential and industrial construction.</p>
+    </div>
+
+    <div>
+      <h5>Sitemap</h5>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Commercial</a></li>
+        <li><a href="#services">Residential</a></li>
+        <li><a href="#services">Renovation</a></li>
+        <li><a href="#services">Design-Build</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Houzz</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    <span>&copy; <span id="year"></span> Caisson Building Co. Licensed General Contractor, GC&#8209;000000.</span>
+    <span>Placeholder site &mdash; sample content throughout.</span>
+  </div>
+</footer>
+
+<script>
+// year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const primaryNav = document.getElementById('primaryNav');
+menuToggle.addEventListener('click', () => {
+  const open = primaryNav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', open);
+});
+primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  primaryNav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', false);
+}));
+
+// hero draw-in animation
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function runHeroDraw(){
+  const paths = document.querySelectorAll('.hero-art .draw-path');
+  const fades = document.querySelectorAll('.hero-art .fade-in-el');
+  if(reduceMotion){
+    paths.forEach(p => p.classList.add('go'));
+    fades.forEach(f => f.classList.add('go'));
+    return;
+  }
+  paths.forEach(p => {
+    try{
+      const len = p.getTotalLength ? p.getTotalLength() : 1000;
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+    }catch(e){}
+  });
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      paths.forEach(p => { p.style.strokeDashoffset = 0; });
+      fades.forEach(f => f.classList.add('go'));
+    });
+  });
+}
+window.addEventListener('load', runHeroDraw);
+
+// scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window && !reduceMotion){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('visible'));
+}
+
+// contact form demo handler
+const form = document.getElementById('quoteForm');
+const status = document.getElementById('form-status');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if(!form.checkValidity()){
+    status.textContent = 'Please fill in the required fields.';
+    return;
+  }
+  status.textContent = 'Thanks — this is a demo form, so nothing was sent. Connect it to your email or CRM to go live.';
+  form.reset();
+});
+</script>
+
+</body>
+</html>
